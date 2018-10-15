@@ -18,7 +18,7 @@ class Solution
 
         foreach ($nums as $num) {
 
-            // Map (key => 频次)
+            // Map (key => 出现的频次)
             if (!$map->hasKey($num)) {
                 $map->put($num, 1);
             } else {
@@ -28,7 +28,7 @@ class Solution
 
         foreach ($map->toArray() as $key => $freq) {
 
-            // 维持堆的高度不超过 $k
+            // 维持堆的大小 不超过 $k
             if($queue->count() < $k) {
 
                 $queue->push($key, $freq);
