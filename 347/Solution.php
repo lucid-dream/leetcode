@@ -16,6 +16,8 @@ class Solution
 
         $map = new \Ds\Map();
 
+        $maxFreq = 100; // 假设最大的频次不超过100
+
         foreach ($nums as $num) {
 
             // Map (key => 出现的频次)
@@ -31,13 +33,14 @@ class Solution
             // 维持堆的大小 不超过 $k
             if($queue->count() < $k) {
 
-                $queue->push($key, $freq);
+                $queue->push($key, $maxFreq - $freq);
 
             } elseif ($freq > $map->get($queue->peek())) {
 
                 //每次遍历map中的频次 和 堆首(最大值) 做比较，如果频次大于堆首，则移除堆末尾元素，并添加当前元素
                 $queue->pop();
-                $queue->push($key, $freq);
+                // $maxFreq - $freq ( 最小堆 ) 让频次最小的key, 放到堆首 ,以便pop()移除的是 最小的频次key
+                $queue->push($key, $maxFreq - $freq);
 
             }
 
