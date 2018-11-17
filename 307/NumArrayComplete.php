@@ -6,6 +6,13 @@
  * Time: 1:14 PM
  */
 
+/**
+ *
+ * 使用线段树数据结构 (推荐)
+ * 更新操作是 O(logn)
+ *
+ * Class NumArrayComplete
+ */
 class NumArrayComplete
 {
 
@@ -198,5 +205,17 @@ class SumMerger
 }
 
 
-$class = new NumArrayComplete([1, 3, 5]);
-$class->sumRange(0, 2); // 9
+
+try {
+
+    $class = new NumArrayComplete([1, 3, 5]);
+    echo $class->sumRange(0, 2) .PHP_EOL; // 9
+    $class->update(1, 2);
+    echo $class->sumRange(0, 2) .PHP_EOL; // 8
+
+} catch (Error $exception) {
+
+    echo $exception->getMessage();
+
+}
+
